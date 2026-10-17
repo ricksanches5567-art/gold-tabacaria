@@ -14,11 +14,11 @@
 @media (min-width:768px){.hero{background-image:url(../video/hero-d-poster.webp)}}
 .hero__shade{background:linear-gradient(180deg,rgba(11,10,7,.6) 0%,rgba(11,10,7,.08) 35%,rgba(11,10,7,.4) 60%,rgba(11,10,7,.94) 100%)}
 .hero__title{font:700 clamp(72px,19vw,220px)/.9 var(--serif);letter-spacing:.06em;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.45))}
-.hero__title .dot{display:inline-block;width:.1em;height:.1em;background:#e0b64a;margin-left:.1em;transform:rotate(45deg);vertical-align:.52em;-webkit-text-fill-color:initial}
+.hero__title .dot{display:inline-block;width:clamp(9px,2.2vw,26px);height:clamp(9px,2.2vw,26px);background:#e0b64a;margin-left:.12em;transform:rotate(45deg);vertical-align:.5em;-webkit-text-fill-color:initial}
 .hero__tag{font:500 clamp(13px,1.5vw,17px)/1.4 var(--sans);letter-spacing:.34em;text-transform:uppercase;font-style:normal}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand__logo{font:700 26px/1 var(--serif);letter-spacing:.14em;color:#fff;display:inline-flex;align-items:center}
-.brand__logo b{display:inline-block;width:.3em;height:.3em;background:var(--gold);transform:rotate(45deg);margin-left:.34em;font-size:0}
+.brand__logo b{display:inline-block;width:7px;height:7px;background:var(--gold);transform:rotate(45deg);margin-left:10px;font-size:0}
 .brand__sub{font:600 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
 .btn--glow{background:var(--grad-gold);color:#140e02;box-shadow:0 10px 40px -10px rgba(224,182,74,.7)}
 .btn--glow:hover{box-shadow:0 18px 50px -12px rgba(224,182,74,.85)}
