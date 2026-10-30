@@ -84,7 +84,7 @@
       '<div class="pm__info"><span class="pm__code">Cód. ' + esc(p.codigo) + ' · ' + esc(catNome(p.categoria)) + (p.categoria === 'vidro' ? ' · Catálogo 2026, página ' + p.pagina : '') + '</span><h2 class="pm__title" id="pmTitle">' + esc(p.nome) + '</h2>' +
       '<p class="pm__price">' + (temPreco(p) ? money(p.preco) : 'Preço em breve') + '</p>' +
       '<p class="pm__desc">' + (p.categoria === 'vidro' ? 'Peça em vidro, enviada em embalagem reforçada. ' : '') + (p.ilustrativa ? 'Foto ilustrativa: o modelo e a marca disponíveis podem variar. ' : '') + 'Fale com a gente para saber medidas, preço e frete. Venda somente para maiores de 18 anos.</p>' +
-      (podeComprar(p) ? '<button class="btn btn--grad btn--block" data-add="' + esc(p.codigo) + '" style="margin-top:10px">Adicionar à sacola</button>' : '<p class="result-info" style="margin-top:12px">Compra online pelo Mercado Pago disponível em breve.</p>') + '</div>';
+      (podeComprar(p) ? '<button class="btn btn--grad btn--block" data-add="' + esc(p.codigo) + '" style="margin-top:10px">Adicionar à sacola</button>' : '<p class="result-info" style="margin-top:12px">Pagamento online em breve.</p>') + '</div>';
     modal.hidden = false;
   }
   document.addEventListener('click', function (e) {
@@ -94,7 +94,7 @@
     if (e.target.closest('[data-close-cart]')) $('#cartDrawer').hidden = true;
   });
 
-  // ---------- sacola + checkout (Mercado Pago + Melhor Envio via Worker) ----------
+  // ---------- sacola + frete (pagamento online em breve) ----------
   var cart = [];
   try { cart = JSON.parse(localStorage.getItem('gold_cart') || '[]'); } catch (e) {}
   function salvar() { try { localStorage.setItem('gold_cart', JSON.stringify(cart)); } catch (e) {} }
@@ -117,7 +117,7 @@
     b.innerHTML = itens.map(function (l) { var p = produtos.find(function (x) { return x.codigo === l.codigo; }); sub += p.preco * l.qtd; return '<p>' + l.qtd + '× ' + esc(p.nome) + ' — ' + money(p.preco * l.qtd) + '</p>'; }).join('') +
       '<p><b>Subtotal: ' + money(sub) + '</b></p><label>CEP <input id="cCep" inputmode="numeric" autocomplete="postal-code"></label> <button class="btn" id="cFrete" type="button">Calcular frete</button><div id="cOpc"></div>' +
       '<form id="cForm" hidden>' + ['nome:Nome completo', 'email:E-mail', 'telefone:WhatsApp', 'cpf:CPF', 'rua:Rua', 'numero:Número', 'complemento:Complemento', 'bairro:Bairro', 'cidade:Cidade', 'uf:UF'].map(function (f) { var k = f.split(':'); return '<label>' + k[1] + ' <input name="' + k[0] + '"' + (k[0] === 'complemento' ? '' : ' required') + '></label>'; }).join('') +
-      '<label><input type="checkbox" required> Declaro ter 18 anos ou mais</label><button class="btn btn--mp btn--block" type="submit">Pagar com Mercado Pago</button><p id="cMsg" role="alert"></p></form>';
+      '<label><input type="checkbox" required> Declaro ter 18 anos ou mais</label><button class="btn btn--block" type="button" disabled>Pagamento online em breve</button><p id="cMsg" role="alert"></p></form>';
     $('#cartDrawer').hidden = false;
     $('#cFrete').onclick = function () {
       post('/frete', { cep_destino: $('#cCep').value, itens: itens }).then(function (j) {
@@ -128,15 +128,12 @@
       }).catch(function (e) { $('#cOpc').textContent = (e && e.erro) || 'Não foi possível calcular o frete.'; });
     };
     $('#cForm').onsubmit = function (ev) {
-      ev.preventDefault(); var f = ev.target, cli = { cep: $('#cCep').value };
-      ['nome', 'email', 'telefone', 'cpf', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'uf'].forEach(function (k) { cli[k] = f[k].value; });
-      post('/checkout', { itens: itens, frete: { servico_id: freteSel.servico_id, preco: freteSel.preco }, cliente: cli, pagamento: 'cartao_boleto' })
-.then(function (j) { try { localStorage.setItem('gold_pedido', j.pedido_id); } catch (e) {} location.href = j.init_point; })
-.catch(function (e) { $('#cMsg').textContent = (e && e.erro) || 'Não foi possível abrir o pagamento. Fale no WhatsApp.'; });
+      ev.preventDefault();
+      $('#cMsg').textContent = 'Pagamento online em breve.';
     };
   }
 
-  // retorno do Mercado Pago
+  // retorno do pedido
   if (/#pedido-ok/.test(location.hash)) { cart = []; salvar(); toast('Pedido recebido! Você vai receber a confirmação. Dúvidas no WhatsApp.'); }
   else if (/#pedido-pendente/.test(location.hash)) toast('Assim que o pagamento for confirmado, enviamos seu pedido.');
   else if (/#pedido-erro/.test(location.hash)) toast('Pagamento não concluído. Tente de novo ou fale no WhatsApp.');
