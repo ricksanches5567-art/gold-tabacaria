@@ -2,14 +2,12 @@
 (function () {
   'use strict';
   var C = window.LOJA_CONFIG || {};
-  var WA = C.whatsappNumber || '5541991064167';
   var API = C.apiPagamento || '';
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var money = function (v) { return 'R$ ' + Number(v).toFixed(2).replace('.', ','); };
   var temPreco = function (p) { return Number(p.preco) > 0; };
-  var podeComprar = function (p) { return !!C.vendasAtivas && temPreco(p); };
-  var waLink = function (txt) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(txt); };
+  var podeComprar = function (p) { return !!C.vendasAtivas && temPreco(p); }; };
   var produtos = [], filtro = 'todas', busca = '';
 
   // ---------- portão 18+ ----------
@@ -51,7 +49,7 @@
     return '<article class="card reveal" data-codigo="' + esc(p.codigo) + '">' +
       '<button class="card__img" data-open="' + esc(p.codigo) + '" aria-label="Ver ' + esc(p.nome) + '"><img src="img/t/' + esc(p.img) + '.webp" alt="' + esc(p.nome) + '" loading="lazy" decoding="async" width="480" height="656"></button>' +
       '<div class="card__body"><h3 class="card__name">' + esc(p.nome) + '</h3><span class="card__code">Cód. ' + esc(p.codigo) + '</span>' + preco + ilus +
-      '<div class="card__btns"><a class="card__wa" target="_blank" rel="noopener" href="' + waLink('Olá! Tenho interesse em ' + p.nome + ' (cód. ' + p.codigo + ') do site da Gold Tabacaria. Qual o preço e o frete?') + '"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Consultar no WhatsApp</a>' + buy + '</div></div></article>';
+      '<div class="card__btns">' + buy + '</div></div></article>';
   }
   function render() {
     var lista = produtos.filter(function (p) {
@@ -86,7 +84,6 @@
       '<div class="pm__info"><span class="pm__code">Cód. ' + esc(p.codigo) + ' · ' + esc(catNome(p.categoria)) + (p.categoria === 'vidro' ? ' · Catálogo 2026, página ' + p.pagina : '') + '</span><h2 class="pm__title" id="pmTitle">' + esc(p.nome) + '</h2>' +
       '<p class="pm__price">' + (temPreco(p) ? money(p.preco) : 'Preço em breve') + '</p>' +
       '<p class="pm__desc">' + (p.categoria === 'vidro' ? 'Peça em vidro, enviada em embalagem reforçada. ' : '') + (p.ilustrativa ? 'Foto ilustrativa: o modelo e a marca disponíveis podem variar. ' : '') + 'Fale com a gente para saber medidas, preço e frete. Venda somente para maiores de 18 anos.</p>' +
-      '<a class="btn btn--wa-solid btn--block" target="_blank" rel="noopener" href="' + waLink('Olá! Tenho interesse em ' + p.nome + ' (cód. ' + p.codigo + ') do site da Gold Tabacaria.') + '"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Consultar no WhatsApp</a>' +
       (podeComprar(p) ? '<button class="btn btn--grad btn--block" data-add="' + esc(p.codigo) + '" style="margin-top:10px">Adicionar à sacola</button>' : '<p class="result-info" style="margin-top:12px">Compra online pelo Mercado Pago disponível em breve.</p>') + '</div>';
     modal.hidden = false;
   }
@@ -111,7 +108,7 @@
   function itensValidos() { return cart.filter(function (l) { var p = produtos.find(function (x) { return x.codigo === l.codigo; }); return p && podeComprar(p); }); }
   function post(rota, body) {
     return fetch(API + rota, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
-      .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw j; return j; }); });
+.then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw j; return j; }); });
   }
   function abrirSacola() {
     var itens = itensValidos(); var b = $('#cartBody');
@@ -134,8 +131,8 @@
       ev.preventDefault(); var f = ev.target, cli = { cep: $('#cCep').value };
       ['nome', 'email', 'telefone', 'cpf', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'uf'].forEach(function (k) { cli[k] = f[k].value; });
       post('/checkout', { itens: itens, frete: { servico_id: freteSel.servico_id, preco: freteSel.preco }, cliente: cli, pagamento: 'cartao_boleto' })
-        .then(function (j) { try { localStorage.setItem('gold_pedido', j.pedido_id); } catch (e) {} location.href = j.init_point; })
-        .catch(function (e) { $('#cMsg').textContent = (e && e.erro) || 'Não foi possível abrir o pagamento. Fale no WhatsApp.'; });
+.then(function (j) { try { localStorage.setItem('gold_pedido', j.pedido_id); } catch (e) {} location.href = j.init_point; })
+.catch(function (e) { $('#cMsg').textContent = (e && e.erro) || 'Não foi possível abrir o pagamento. Fale no WhatsApp.'; });
     };
   }
 

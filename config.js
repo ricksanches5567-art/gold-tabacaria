@@ -1,7 +1,7 @@
 /* CONFIGURAÇÕES DA LOJA — Gold Tabacaria (arquivo PÚBLICO: nunca coloque senha ou token aqui) */
 window.LOJA_CONFIG = {
   nomeLoja: "Gold Tabacaria",
-  whatsappNumber: "5541991064167",
+  whatsappNumber: "",
   instagram: "",
   // Servidor de pagamento (Cloudflare Worker separado: pedidos não se misturam)
   apiPagamento: "https://gold-tabacaria-pagamento.cwbmodafitness.workers.dev",
