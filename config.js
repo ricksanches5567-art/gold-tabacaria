@@ -8,6 +8,5 @@ window.LOJA_CONFIG = {
   // Compra online DESLIGADA até os preços serem cadastrados em data/produtos.json.
   // Mesmo ligada, só itens com preço > 0 podem ir para a sacola (o servidor também recusa itens sem preço).
   vendasAtivas: false,
-  cidade: "Curitiba – PR",
-  cnpj: "37.789.447/0001-00"
+  cidade: "Curitiba – PR"
 };

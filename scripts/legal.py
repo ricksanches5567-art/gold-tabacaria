@@ -6,7 +6,7 @@ HEAD='''<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name
 <script>if(localStorage.getItem('gold18')!=='ok')location.replace('./');</script></head>
 <body class="legal-page"><header class="legal-top"><div class="topbar__in"><a class="brand" href="./"><span class="brand__logo">GOLD<b>.</b></span><span class="brand__sub">Tabacaria</span></a><a class="legal-back" href="./">&larr; Voltar à loja</a></div></header>
 <main id="conteudo"><section class="legal-hero"><div class="wrap"><p class="eyebrow">{t}</p><h1 class="display">{h}</h1>
-<p>Atualizada em 14 de outubro de 2026 · Gold Tabacaria · CNPJ 37.789.447/0001-00 · Curitiba – PR</p></div></section>
+<p>Atualizada em 14 de outubro de 2026 · Gold Tabacaria · Curitiba – PR</p></div></section>
 <section class="legal"><div class="wrap legal__body">'''
 FOOT='''</div></section></main>
 <div class="warn-bar"><b>+18</b> · Venda proibida para menores de 18 anos.</div>
@@ -14,7 +14,7 @@ FOOT='''</div></section></main>
 <p class="ms-warning">O Ministério da Saúde adverte: fumar causa câncer, doenças do coração e dependência. Venda proibida para menores de 18 anos.</p>
 <ul class="footer__list"><li><a href="https://wa.me/5541991064167" target="_blank" rel="noopener">WhatsApp (41) 99106-4167</a></li><li>Curitiba – PR</li></ul>
 <nav class="footer__legal"><a href="trocas.html">Trocas e devoluções</a><a href="privacidade.html">Política de privacidade</a><a href="termos.html">Termos de uso</a><a href="creditos.html">Créditos das imagens</a></nav>
-<p class="footer__seller">Vendedor: Gold Tabacaria · CNPJ 37.789.447/0001-00 · Curitiba – PR · WhatsApp (41) 99106-4167</p><p class="footer__copy">© 2026 Gold Tabacaria</p></div></footer></body></html>'''
+<p class="footer__seller">Vendedor: Gold Tabacaria · Curitiba – PR · WhatsApp (41) 99106-4167</p><p class="footer__copy">© 2026 Gold Tabacaria</p></div></footer></body></html>'''
 P={
 'trocas.html':('Trocas e devoluções','Trocas e <em>devoluções</em>','''
 <h2>Direito de arrependimento (7 dias)</h2><p>Compras feitas pelo site podem ser canceladas em até 7 dias corridos após o recebimento (Código de Defesa do Consumidor, art. 49), com reembolso integral do valor pago, inclusive o frete. Fale com a gente pelo WhatsApp (41) 99106-4167 informando o número do pedido.</p>
@@ -22,7 +22,7 @@ P={
 <h2>Como devolver</h2><p>A peça deve voltar na embalagem original, bem protegida. Combinamos a postagem reversa pelo WhatsApp; o frete de devolução por arrependimento ou defeito é por nossa conta.</p>
 <h2>Reembolso</h2><p>O reembolso é feito pelo Mercado Pago, no mesmo meio de pagamento (Pix, cartão ou boleto), em até 10 dias úteis após recebermos a peça de volta. No cartão, o estorno pode aparecer em até duas faturas, conforme o banco.</p>'''),
 'privacidade.html':('Política de privacidade','Política de <em>privacidade</em>','''
-<p>Esta política explica como a Gold Tabacaria (CNPJ 37.789.447/0001-00) trata seus dados pessoais, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+<p>Esta política explica como a Gold Tabacaria trata seus dados pessoais, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
 <h2>Dados que coletamos</h2><ul><li>Nome, e-mail, telefone/WhatsApp e CPF, para emitir o pedido e o envio;</li><li>Endereço de entrega (CEP, rua, número, complemento, bairro, cidade e UF);</li><li>A confirmação de que você tem 18 anos ou mais.</li></ul>
 <h2>Para que usamos</h2><ul><li><strong>Pagamento</strong>: pelo Mercado Pago. Não vemos nem guardamos dados de cartão.</li><li><strong>Entrega</strong>: cálculo de frete e etiqueta pelo Melhor Envio e pela transportadora escolhida.</li><li><strong>Atendimento</strong>: contato sobre o pedido pelo WhatsApp ou e-mail.</li></ul>
 <h2>No seu navegador</h2><p>O site guarda no próprio navegador a confirmação de idade e a sacola. Não usamos cookies de publicidade nem ferramentas de rastreamento.</p>
@@ -33,7 +33,7 @@ P={
 <h2>Preços e pagamento</h2><p>Preços em reais. O pagamento é processado pelo Mercado Pago (Pix, cartão ou boleto). O pedido é confirmado após a aprovação do pagamento.</p>
 <h2>Envio</h2><p>Enviamos para todo o Brasil a partir de Curitiba – PR. Maçaricos e isqueiros seguem as regras de transporte de cada transportadora para itens com gás (podem ser enviados sem gás/carga e ter restrição de região ou serviço). Opções, valores e prazos são calculados pelo CEP, pelo Melhor Envio. Confira o endereço antes de pagar.</p>
 <h2>Advertência</h2><p><strong>O Ministério da Saúde adverte: fumar causa câncer, doenças do coração e dependência.</strong></p>
-<h2>Contato</h2><p>Gold Tabacaria · CNPJ 37.789.447/0001-00 · Curitiba – PR · WhatsApp (41) 99106-4167.</p>'''),
+<h2>Contato</h2><p>Gold Tabacaria · Curitiba – PR · WhatsApp (41) 99106-4167.</p>'''),
 }
 P['creditos.html']=('Créditos das imagens','Créditos das <em>imagens</em>','''
 <p>As fotos de vidros são do catálogo da loja. As fotos ilustrativas de maçaricos e isqueiros vêm do Wikimedia Commons, com licenças livres, e foram apenas recortadas e redimensionadas. Elas serão trocadas pelas fotos reais dos produtos.</p>
