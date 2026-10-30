@@ -7,7 +7,7 @@
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var money = function (v) { return 'R$ ' + Number(v).toFixed(2).replace('.', ','); };
   var temPreco = function (p) { return Number(p.preco) > 0; };
-  var podeComprar = function (p) { return !!C.vendasAtivas && temPreco(p); }; };
+  var podeComprar = function (p) { return !!C.vendasAtivas && temPreco(p); };
   var produtos = [], filtro = 'todas', busca = '';
 
   // ---------- portão 18+ ----------
